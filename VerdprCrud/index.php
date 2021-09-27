@@ -18,7 +18,7 @@
 
     <?php
 
-        echo " <div class='head'><h1>Placespedia</h1>";
+        echo " <div class='head'><h1>HOI ALEX</h1>";
         echo "<p>Many places more towns.</div>";
     ?>
 
