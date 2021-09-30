@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="304716dc-2f2e-4fc5-b1e8-5d04f4a8584e" name="PlacesPedia" url="http://placepedia.tommieruijgrok.nl">
+        <fileTransfer rootFolder="/PlacePedia" accessType="SFTP" host="ssh.strato.com" port="22" sshConfigId="7f81157d-cd0d-4241-8452-9505e6d2bd55" sshConfig="tommie@tommieruijgrok.nl@ssh.strato.com:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="09e50085-c67f-448b-a6b4-c482b569b2a3" name="ICT-LAB" url="http://85746.ict-lab.nl">
+        <fileTransfer rootFolder="/httpdocs/PlacePedia" host="web02.ict-lab.nl" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
