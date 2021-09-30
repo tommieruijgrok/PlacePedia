@@ -1,38 +1,11 @@
-<html>
-<head>
-    <link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="stylesheet/general.css">
 
-</head>
-<body>
-<div class="container">
-
-    <div class="form">
-    <form action="https://tommieruijgrok.nl/PlacePedia/place.php"  method="get">
-
-         <datalist id="form" value="id"  type="text" placeholder="Town-name" name="stad"></datalist>
-        <input id="submit" type="submit" value="search">
-    </form>
-
+<div style="position: relative">
+    <div style="position: absolute; top: 20px; left: 20px; ">
+        <input type="text" style="padding: 10px; border: 0px">
     </div>
-
-
-    <?php
-
-        echo " <div class='head'><h1>Placespedia</h1>";
-        echo "<p>Many places more towns.</div>";
-    ?>
-
-
-
-    <div class="inlog">
-       <a id="inlog" href="inlog.php">inlog</a>
-    </div>
+    <iframe width='100%' height='100%' src="https://api.mapbox.com/styles/v1/tommieruijgrok/cku03g2pf2ib917sc32hrfa3n.html?title=false&access_token=pk.eyJ1IjoidG9tbWllcnVpamdyb2siLCJhIjoiY2tlbHRieThtMGRoYTJ3bzhuZWpxaGhkaCJ9.qO-h706kQ-RHeEe6REe2eg&zoomwheel=false#6.5/52.132633/5.291266" title="Basic" style="border:none;"></iframe>
 </div>
-    <div class="map">
-        <img src="img/map.png" width=700px;>
-    </div>
 
 
-</body>
-</html>
-
+<?php

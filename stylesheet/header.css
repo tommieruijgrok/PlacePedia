@@ -1,0 +1,44 @@
+header {
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:25px;
+}
+
+header {
+    font-weight: bold;
+}
+
+header div input {
+    font-size: 12px;
+    padding: 5px 5px;
+    border: 0px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 6px 3px rgb(217, 217, 217);
+}
+
+header div p, a {
+    transition: transform 0.3s;
+}
+
+header div p:hover {
+    transform: translate(0px, -6px);
+}
+
+#logoutButton:hover {
+    transform: translate(6px, 0px);
+}
+
+header p, h2, a {
+    text-shadow: 0px 0px 20px #BCBCBC !important;
+}
