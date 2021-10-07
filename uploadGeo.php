@@ -7,6 +7,7 @@ if(isset($_POST['input'])){
 
     if(mysqli_query($conn, $sqlCity)){
        header('location: output.php');
+       echo "YEAH";
     } else{
         die("Connection failed: " . $sqlCity);
     }
