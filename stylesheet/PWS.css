@@ -1,0 +1,119 @@
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login {
+    background-color: white;
+    padding: 20px;
+    width: 500px;
+    border-radius: 11px;
+    position: absolute;
+    z-index: 999;
+}
+
+#login form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+#login form input {
+    width: 100%;
+    border: 0px;
+    padding: 7px 10px;
+    font-size: 16px;
+    background-color: #EFEFEF;
+
+}
+
+#login form input[type='submit']{
+    background-color: #2075a7;
+    
+}
+
+
+
+.strength-meter {
+    position: relative;
+    height: 0.5rem;
+    width: 100%;
+    background-color: #EFEFEF;
+    border-radius: 1rem;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .strength-meter::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: calc(1% * var(--strength, 0));
+    background-color: hsl(106, 75%, 61%);
+
+    transition: width 200ms;
+  }
+  
+    
+  
+  .password-input {
+    margin-top: 1rem;
+
+    width: 90%;
+    padding: .25rem .75rem;
+    background-color: hsl(261, 88%, 25%);
+    color: rgb(71, 92, 109);
+    border: 1px solid hsl(261, 88%, 57%);
+    outline: none;
+    text-align: left;
+    border-radius: .3rem;
+  }
+
+  .password-input:focus {
+    border-color: hsl(261, 88%, 70%);
+  }
+
+  .reasons > * {
+    margin-top: .5rem;
+    color: hsl(261, 88%, 80%);
+  }
+  .animated-fast {
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  .fade-up {
+    -webkit-animation-name: fade-up;
+    animation-name: fade-up;
+  }
+ .animate__bounceInUp{
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 1s; /* don't forget to set a duration! */
+  
+}

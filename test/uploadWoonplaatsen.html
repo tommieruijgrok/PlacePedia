@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    loadJson();
+    function loadJson(){
+        let oxjb = new XMLHttpRequest();
+        oxjb.overrideMimeType('application/json')
+        oxjb.open('GET', 'https://placepedia.tommieruijgrok.nl/json/WoonplaatsenNL.json');
+        oxjb.onreadystatechange = function (){
+            if (oxjb.readyState == 4 && oxjb.status == "200"){
+                let uitgepakteJson = JSON.parse(oxjb.responseText);
+
+                console.log(uitgepakteJson['places'][5117]);
+                /*counter = 0;
+                setInterval(function (){
+                    if (counter < uitgepakteJson['places'].length){
+                        counter++;
+
+                        placeName = uitgepakteJson['places'][counter].place;
+                        placeId = uitgepakteJson['places'][counter].placecode;
+
+                        let oxjbA = new XMLHttpRequest();
+                        oxjbA.overrideMimeType('application/json')
+                        oxjbA.open('GET', 'https://placepedia.tommieruijgrok.nl/test/makeGemeenteJson.php?name=' + uitgepakteJson['places'][counter].municipality);
+                        oxjbA.onreadystatechange = function (){
+                            if (oxjbA.readyState == 4 && oxjbA.status == "200"){
+                                //let uitgepakteJson = JSON.parse(oxjbA.responseText);
+                                gemeenteId = this.responseText;
+                                //console.log(gemeenteId);
+                                console.log(placeName);
+                                //console.log(placeId);
+
+                                if (placeId == ''){
+                                    placeId = 0;
+                                }
+
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.open("GET", "uploadWoonplaats.php?woonplaatsId=" + placeId + "&woonplaatsNaam=" + placeName + "&gemeenteId=" + gemeenteId, true);
+                                xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                                xhttp.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+
+                                        // Response
+                                        var response = this.responseText;
+                                        console.log(response);
+
+                                    }
+                                };
+                                xhttp.send();
+
+
+                            }
+
+                        }
+                        oxjbA.send(null);
+                    }
+                }, 250)*/
+
+                /*for (i=0; i < 500; i++){
+
+                    placeName = uitgepakteJson['places'][i].place;
+                    placeId = uitgepakteJson['places'][i].placecode;
+
+
+                    console.log(i);
+                    console.log(placeName);
+                    let oxjbA = new XMLHttpRequest();
+                    oxjbA.overrideMimeType('application/json')
+                    oxjbA.open('GET', 'https://placepedia.tommieruijgrok.nl/test/makeGemeenteJson.php?name=' + uitgepakteJson['places'][i].municipality);
+                    oxjbA.onreadystatechange = function (){
+                        if (oxjbA.readyState == 4 && oxjbA.status == "200"){
+                            //let uitgepakteJson = JSON.parse(oxjbA.responseText);
+                            gemeenteId = this.responseText;
+                            console.log(gemeenteId);
+                            console.log(placeName);
+                            console.log(placeId);
+
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.open("GET", "uploadWoonplaats.php?woonplaatsId=" + placeId + "&woonplaatsNaam=" + placeName + "&gemeenteId=" + gemeenteId, true);
+                            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                            xhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+
+                                    // Response
+                                    var response = this.responseText;
+                                    console.log(response);
+
+                                }
+                            };
+                            xhttp.send();
+
+
+                        }
+
+                    }
+                    oxjbA.send(null);
+
+                }*/
+
+
+
+            }
+
+        }
+        oxjb.send(null);
+    }
+
+</script>
+</html>
