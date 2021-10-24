@@ -3,13 +3,19 @@ session_start();
 ?>
 <link rel="stylesheet" href="../stylesheet/header.css">
 <header>
-    <h2>PlacePedia</h2>
+    <a href="index.php" style="color: unset; text-decoration: none"><h2>PlacePedia</h2></a>
     <div>
-        <input type="text">
+        <div id="searchBarParent">
+            <input type="text" id="searchBar" placeholder="Zoek een plek op!">
+            <div id="dropdown">
+
+            </div>
+        </div>
+
         <?php
             if ($_SESSION['status'] == 'true'){
                 ?>
-                    <p><?php echo $_SESSION['userName'] ?></p>
+                    <a style="text-decoration: none; color: unset" href="profile.php"><?php echo $_SESSION['userName'] ?></a>
                     <a id="logoutButton" href="../process/logout.php" style="text-decoration: none; color: unset">Uitloggen
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
@@ -23,3 +29,4 @@ session_start();
 
     </div>
 </header>
+<script src="script/searchBar.js"></script>
