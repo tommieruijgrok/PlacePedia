@@ -20,6 +20,10 @@ if (isset($_POST['formEmail']) && isset($_POST['formPassword'])){
 
             header('location: ../profile.php');
         }
+    } else {
+        header('location: ../login.php?error=De gevens waren onjuist!');
     }
 
+} else {
+    header('location: ../login.php');
 }

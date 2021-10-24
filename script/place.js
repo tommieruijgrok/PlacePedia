@@ -6,5 +6,3 @@ function edit(el){
     parentEl.getElementsByClassName('reviewEditor')[0].classList.toggle('hidden');
 
 }
-
-console.log("GIT TEST");

@@ -4,21 +4,43 @@
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/light-v10', // style URL
         center:  <?php
-        $sql = "SELECT * FROM NederlandseGemeentenGeo WHERE gemeenteCode = " . $gemeenteCode;
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                $x = json_decode($row['geoJson']);
-                $x = json_encode($x[0][0][0]);
-                echo $x;
-                //echo json_encode($row['geoJson'], JSON_PRETTY_PRINT);
-
+            if ($placeType == "GM" || $placeType == "PV"){
+                $sql = "SELECT * FROM GeoInfo WHERE code = " . $placeCode . " AND type = '" . $placeType . "'";
+            } else if ($placeType == "WP"){
+                $sql = "SELECT * FROM GeoInfo WHERE code = " . $placeGemeenteCode . " AND type = 'GM'";
             }
-        }
+
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    $x = json_decode($row['geoJson']);
+
+                    if ($placeType == "GM" || $placeType == "WP"){
+                        $x = json_encode($x[0][0][0]);
+                    } else if ($placeType == "PV"){
+                        $x = json_encode($x[0][0]);
+                    }
+                    echo $x;
+                    //echo json_encode($row['geoJson'], JSON_PRETTY_PRINT);
+
+                }
+            }
+
+
         ?>, // starting position
-        zoom: 8 // starting zoom
+        <?php
+            if ($placeType == "GM" || $placeType == "WP"){
+                ?>
+                    zoom: 8
+                <?php
+            } else if ($placeType == "PV"){
+                ?>
+                    zoom: 6
+                <?php
+            }
+        ?>
+         // starting zoom
     });
 
     map.on('load', () => {
@@ -28,21 +50,36 @@
             'data': {
                 'type': 'Feature',
                 'geometry': {
-                    'type': 'MultiPolygon',
-// These coordinates outline Maine.
-                    'coordinates': <?php
-                    $sql = "SELECT * FROM NederlandseGemeentenGeo WHERE gemeenteCode = " . $gemeenteCode;
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo trim($row['geoJson']);
-                            //echo json_encode($row['geoJson'], JSON_PRETTY_PRINT);
-
-                        }
+                    <?php
+                    if ($placeType == "GM" || $placeType == "WP"){
+                    ?>
+                    'type': "MultiPolygon",
+                    <?php
+                    } else if ($placeType == "PV"){
+                    ?>
+                    'type': "Polygon",
+                    <?php
                     }
                     ?>
+                //'type': 'MultiPolygon',
+// These coordinates outline Maine.
+                'coordinates': <?php
+                    if ($placeType == "GM" || $placeType == "PV"){
+                        $sql = "SELECT * FROM GeoInfo WHERE code = " . $placeCode . " AND type = '" . $placeType . "'";
+                    } else if ($placeType == "WP"){
+                        $sql = "SELECT * FROM GeoInfo WHERE code = " . $placeGemeenteCode . " AND type = 'GM'";
+                    }
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo trim($row['geoJson']);
+                        //echo json_encode($row['geoJson'], JSON_PRETTY_PRINT);
+
+                    }
+                }
+                ?>
                 }
             }
         });
